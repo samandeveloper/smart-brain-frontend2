@@ -87,17 +87,20 @@ class App extends Component{
   //agar parameter ra b jaye khali imageUrl gharar dahim baz javab migirim
    //FACE_DETECT_MODEL: 'a403429f2ddf4b49b307e318f00e528b',
     //code api bala ra mitavan b jaye Clarifai.FACE_DETECT_MODEL gharar dad
-  onButtonSubmit=()=>{
-    this.setState({imageUrl:this.state.input});
-     fetch('https://smart-brain-backend2.onrender.com/imageurl',{
-            method: 'post',
-            headers: {'Content-Type':'application/json'},
-            body:JSON.stringify({
-              //Nokte: agar b jaye khate payin  id: this.state.user.id ra gharar dahim farghi nemikonad
-              input: this.state.input
+//   onButtonSubmit=()=>{
+//     this.setState({imageUrl:this.state.input});
+//      fetch('https://smart-brain-backend2.onrender.com/imageurl',{
+//             method: 'post',
+//             headers: {'Content-Type':'application/json'},
+//             body:JSON.stringify({
+//               //Nokte: agar b jaye khate payin  id: this.state.user.id ra gharar dahim farghi nemikonad
+//               input: this.state.input
              
-            })
-          })
+//             })
+//           })
+ 
+   onButtonSubmit=()=>{
+    this.setState({imageUrl:this.state.input});
    
     // app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
     //http dar khate payin ra mitavan hazf kard
