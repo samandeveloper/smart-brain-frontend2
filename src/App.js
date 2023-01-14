@@ -89,7 +89,7 @@ class App extends Component{
     //code api bala ra mitavan b jaye Clarifai.FACE_DETECT_MODEL gharar dad
   onButtonSubmit=()=>{
     this.setState({imageUrl:this.state.input});
-     fetch('https://smart-brain-backend-ymes.onrender.com/imageurl',{
+     fetch('https://smart-brain-backend2.onrender.com/imageurl',{
             method: 'post',
             headers: {'Content-Type':'application/json'},
             body:JSON.stringify({
@@ -105,7 +105,7 @@ class App extends Component{
       .then(response=>response.json())
       .then(response=> {
         if(response){
-          fetch('https://smart-brain-backend-ymes.onrender.com/image',{
+          fetch('https://smart-brain-backend2.onrender.com/image',{
             method: 'put',
             headers: {'Content-Type':'application/json'},
             body:JSON.stringify({
