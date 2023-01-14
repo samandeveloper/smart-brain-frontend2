@@ -89,7 +89,7 @@ class App extends Component{
     //code api bala ra mitavan b jaye Clarifai.FACE_DETECT_MODEL gharar dad
   onButtonSubmit=()=>{
     this.setState({imageUrl:this.state.input});
-     fetch('https://smart-brain-backend2.onrender.com/FACE_DETECT_MODEL',{
+     fetch('https://smart-brain-backend2.onrender.com/imageUrl',{
 //    fetch("https://api.clarifai.com/v2/models/a403429f2ddf4b49b307e318f00e528b/45fb9a671625463fa646c3523a3087d5/imageurl",{
             method: 'post',
             headers: {'Content-Type':'application/json'},
