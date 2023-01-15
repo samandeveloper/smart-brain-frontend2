@@ -10,9 +10,9 @@ import Signin from './component/Signin/Signin';
 import Register from './component/Register/Register';
 import Clarifai from 'clarifai';
 
-// const app = new Clarifai.App({
-//  apiKey: '5811f725850a45738d35b52dfbd00b7f'
-// });
+const app = new Clarifai.App({
+ apiKey: API_KEY
+});
 
   const particlesOptions={
     particles:{
