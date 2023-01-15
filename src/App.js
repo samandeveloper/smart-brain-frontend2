@@ -10,10 +10,9 @@ import Signin from './component/Signin/Signin';
 import Register from './component/Register/Register';
 import Clarifai from 'clarifai';
 
-
-const app = new Clarifai.App({
- apiKey: '5811f725850a45738d35b52dfbd00b7f'
-});
+// const app = new Clarifai.App({
+//  apiKey: '5811f725850a45738d35b52dfbd00b7f'
+// });
 
   const particlesOptions={
     particles:{
@@ -51,7 +50,6 @@ class App extends Component{
      
   }
 
-  //MOHEM(data,user)
   loadUser=(data)=>{
     this.setState({user:{
       id: data.id,
@@ -62,7 +60,6 @@ class App extends Component{
     }
   })
   }
-
 
   calculateFaceLocation =(data)=>{
     const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
@@ -76,7 +73,7 @@ class App extends Component{
       buttomRow: height-(clarifaiFace.bottom_row*height)
     }
   }
-  // chon box ra b onvane param gharar dadim digar this.state.box neminevisim
+
   displayFaceBox=(box)=>{
     this.setState({box:box})
   }
@@ -84,27 +81,18 @@ class App extends Component{
   onInputChange=(event)=>{
     this.setState({input:event.target.value});
   }
-  //agar parameter ra b jaye khali imageUrl gharar dahim baz javab migirim
-   //FACE_DETECT_MODEL: 'a403429f2ddf4b49b307e318f00e528b',
-    //code api bala ra mitavan b jaye Clarifai.FACE_DETECT_MODEL gharar dad
+
+
   onButtonSubmit=()=>{
     this.setState({imageUrl:this.state.input});
      fetch('https://smart-brain-backend2.onrender.com/imageurl',{
             method: 'post',
             headers: {'Content-Type':'application/json'},
             body:JSON.stringify({
-              //Nokte: agar b jaye khate payin  id: this.state.user.id ra gharar dahim farghi nemikonad
               input: this.state.input,
-        
             })
           })
  
-//    onButtonSubmit=()=>{
-//     this.setState({imageUrl:this.state.input});
-   
-    // app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
-    //http dar khate payin ra mitavan hazf kard
-    //chon in fetch ast hatman bayad  .then(response=>response.json()) ra benevisim
       .then(response=>response.json())
       .then(response=> {
         if(response){
@@ -116,7 +104,6 @@ class App extends Component{
             })
           })
 
-        
           .then (response=>response.json())
           .then (count=>{
             this.setState(Object.assign(this.state.user,{entries:count}))
@@ -130,9 +117,6 @@ class App extends Component{
 
     onRouteChange = (route) => {
       if(route==='signout'){
-        //ghablan:
-        //this.setState({isSignedIn:false})
-        //Nokte: chon digar initialState male state ha nist dorash {} gharar nemidahim
         this.setState(initialState);
       }
       else if(route==='home'){
@@ -146,7 +130,6 @@ class App extends Component{
       <div className='App'>
         <Particles className='particles' params={particlesOptions}/>
         <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange}/>
-
 
         {this.state.route==='home'
 
@@ -168,14 +151,6 @@ class App extends Component{
           ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
           : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
           )
-         // :this.state.route==='register'
-         //  ? <Register onRouteChange={this.onRouteChange}/>
-
-         // :this.state.route==='signin'
-          
-         //  ? <Signin onRouteChange={this.onRouteChange}/>
-          
-         // :null
            }
       
          </div>
@@ -183,6 +158,5 @@ class App extends Component{
       );
 }
  
-
 }
 export default App;
